@@ -31,12 +31,30 @@ Axios
 React Query
 
 Milestones
+### Current Features
+
+- User Registration
+- User Login
+- BCrypt Password Encryption
+- Role-based User Model
+
+##  Authentication
+
+Implemented:
+
+- User Registration
+- User Login
+- BCrypt Password Encryption
+- JWT Token Generation
+- JWT Validation
+- Stateless Spring Security
+- Protected REST APIs
 
 ✅ Milestone 1
 
 Project setup and authentication foundation.
 
-🚧 Milestone 2
+✅ Milestone 2
 
 Authentication APIs (Register/Login/JWT)
 

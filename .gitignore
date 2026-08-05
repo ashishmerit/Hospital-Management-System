@@ -1,67 +1,47 @@
-####################################################
-# Root Git Ignore - Hospital Management System
-####################################################
-
-###############
-# Java / Maven
-###############
-
-**/target/
-*.class
-
-###############
-# Node / React
-###############
-
-**/node_modules/
-**/dist/
-
-###############
-# Environment
-###############
-
-.env
-.env.*
-
-###############
-# IDE
-###############
-
-.vscode/
-.idea/
-
-###############
-# OS
-###############
-
+# ==========================
+# Operating System
+# ==========================
 .DS_Store
 Thumbs.db
 
-###############
-# Logs
-###############
+# ==========================
+# VS Code / IntelliJ
+# ==========================
+.vscode/
+.idea/
+*.iml
 
+# ==========================
+# Logs
+# ==========================
 *.log
 
-###############
-# Runtime
-###############
+# ==========================
+# Environment Variables
+# ==========================
+.env
+.env.*
 
-*.pid
+# ==========================
+# Documentation (Private)
+# ==========================
+docs/Project_progress.md
+docs/Developer_Notes.md
 
-###############
-# Temporary Files
-###############
+# ==========================
+# Backend Build
+# ==========================
+backend/target/
 
-*.tmp
-*.swp
+# ==========================
+# Frontend Build
+# ==========================
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
 
-###############
-# Package Managers
-###############
-
-npm-debug.log*
-yarn-debug.log*
-pnpm-debug.log*
-
-docs/
+# ==========================
+# Postman Local Cache
+# ==========================
+.postman/
+postman/
