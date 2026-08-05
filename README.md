@@ -49,6 +49,11 @@ Implemented:
 - JWT Validation
 - Stateless Spring Security
 - Protected REST APIs
+Tested
+- Registration API
+- Login API
+- Protected endpoints with Bearer Token
+- Unauthorized access without JWT
 
 ✅ Milestone 1
 
