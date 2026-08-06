@@ -38,16 +38,10 @@ Implemented:
 - User Registration
 - User Login
 - BCrypt Password Encryption
-- Role-based User Model
-
-- User Registration
-- User Login
-- BCrypt Password Encryption
 - JWT Token Generation
 - JWT Validation
 - Stateless Spring Security
-- Protected REST APIs
-Tested
+- Protected REST APIs Tested
 - Registration API
 - Login API
 - Protected endpoints with Bearer Token
@@ -58,6 +52,11 @@ Tested
   - Update Doctor
   - Delete Doctor
   - View Doctor
+
+- Patient Module
+  - Create, Read, Update, Delete patient profiles.
+  - User-to-profile relationship.
+  - REST APIs with validation.
 
 ✅ Milestone 1
 
@@ -71,11 +70,9 @@ Authentication APIs (Register/Login/JWT)
 
 Doctor Module
 
-⏳ Milestone 4
+✅ Milestone 4
 
 Patient Module
-
-
 
 ⏳ Milestone 5
 
