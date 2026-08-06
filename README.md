@@ -33,14 +33,12 @@ React Query
 Milestones
 ### Current Features
 
+Implemented:
+
 - User Registration
 - User Login
 - BCrypt Password Encryption
 - Role-based User Model
-
-##  Authentication
-
-Implemented:
 
 - User Registration
 - User Login
@@ -55,6 +53,12 @@ Tested
 - Protected endpoints with Bearer Token
 - Unauthorized access without JWT
 
+- Doctor Management
+  - Create Doctor
+  - Update Doctor
+  - Delete Doctor
+  - View Doctor
+
 ✅ Milestone 1
 
 Project setup and authentication foundation.
@@ -63,13 +67,15 @@ Project setup and authentication foundation.
 
 Authentication APIs (Register/Login/JWT)
 
-⏳ Milestone 3
+✅  Milestone 3
 
-Patient Module
+Doctor Module
 
 ⏳ Milestone 4
 
-Doctor Module
+Patient Module
+
+
 
 ⏳ Milestone 5
 
