@@ -58,6 +58,15 @@ Implemented:
   - User-to-profile relationship.
   - REST APIs with validation.
 
+- Appointment Management
+
+- Create Appointment
+- View All Appointments
+- View Appointment by ID
+- Update Appointment
+- Cancel/Delete Appointment
+- JWT Protected APIs
+
 ✅ Milestone 1
 
 Project setup and authentication foundation.
@@ -74,7 +83,7 @@ Doctor Module
 
 Patient Module
 
-⏳ Milestone 5
+✅ Milestone 5
 
 Appointment Module
 
