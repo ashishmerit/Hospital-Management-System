@@ -6,6 +6,7 @@ import com.hms.backend.entity.Appointment;
 import com.hms.backend.entity.AppointmentStatus;
 import com.hms.backend.entity.Doctor;
 import com.hms.backend.entity.User;
+import com.hms.backend.exception.ResourceNotFoundException;
 import com.hms.backend.repository.AppointmentRepository;
 import com.hms.backend.repository.DoctorRepository;
 import com.hms.backend.repository.UserRepository;
@@ -66,7 +67,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     public AppointmentResponse getAppointmentById(Long id) {
 
         Appointment appointment = appointmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Appointment not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Appointment not found"));
 
         return map(appointment);
     }
@@ -76,13 +77,13 @@ public class AppointmentServiceImpl implements AppointmentService {
                                                  AppointmentRequest request) {
 
         Appointment appointment = appointmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Appointment not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Appointment not found"));
 
         Doctor doctor = doctorRepository.findById(request.getDoctorId())
-                .orElseThrow(() -> new RuntimeException("Doctor not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
 
         User patient = userRepository.findById(request.getPatientId())
-                .orElseThrow(() -> new RuntimeException("Patient not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Patient not found"));
 
         appointment.setDoctor(doctor);
         appointment.setPatient(patient);
@@ -97,7 +98,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     public void deleteAppointment(Long id) {
 
         Appointment appointment = appointmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Appointment not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Appointment not found"));
 
         appointmentRepository.delete(appointment);
     }

@@ -13,6 +13,8 @@ import com.hms.backend.service.DoctorService;
 
 import jakarta.validation.Valid;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 @RestController
 @RequestMapping("/api/doctors")
 @Validated
@@ -24,6 +26,7 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<DoctorResponse> createDoctor(
             @Valid @RequestBody DoctorRequest request) {
@@ -33,12 +36,14 @@ public class DoctorController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR')")
     @GetMapping
     public ResponseEntity<List<DoctorResponse>> getAllDoctors() {
 
         return ResponseEntity.ok(doctorService.getAllDoctors());
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR')")
     @GetMapping("/{id}")
     public ResponseEntity<DoctorResponse> getDoctorById(
             @PathVariable Long id) {
@@ -46,6 +51,7 @@ public class DoctorController {
         return ResponseEntity.ok(doctorService.getDoctorById(id));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<DoctorResponse> updateDoctor(
             @PathVariable Long id,
@@ -55,6 +61,7 @@ public class DoctorController {
                 doctorService.updateDoctor(id, request));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDoctor(
             @PathVariable Long id) {

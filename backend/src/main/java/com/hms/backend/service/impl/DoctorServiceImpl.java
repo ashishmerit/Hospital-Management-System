@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import com.hms.backend.dto.request.DoctorRequest;
 import com.hms.backend.dto.response.DoctorResponse;
 import com.hms.backend.entity.Doctor;
+import com.hms.backend.exception.ResourceNotFoundException;
 import com.hms.backend.repository.DoctorRepository;
 import com.hms.backend.service.DoctorService;
+import com.hms.backend.exception.ResourceNotFoundException;
 
 @Service
 public class DoctorServiceImpl implements DoctorService {
@@ -71,7 +73,7 @@ public class DoctorServiceImpl implements DoctorService {
     public DoctorResponse updateDoctor(Long id, DoctorRequest request) {
 
         Doctor doctor = doctorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Doctor not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Doctor not found"));
 
         if (!doctor.getEmail().equals(request.getEmail())
                 && doctorRepository.existsByEmail(request.getEmail())) {

@@ -1,96 +1,129 @@
-Hospital Management System
+# Hospital Management System
 
-Tech Stack
+A full-stack Hospital Management System designed to manage patients, doctors, appointments, authentication, and role-based access through a secure web application.
 
-Backend
+The project is being developed with a modular architecture so that additional hospital workflows and intelligent scheduling features can be integrated without restructuring the core application.
 
-Spring Boot 3.5.16
+---
 
-Spring Security
+## Overview
 
-Spring Data JPA
+The Hospital Management System provides a centralized platform for managing healthcare-related operations.
 
-MySQL
+The system is designed around multiple user roles:
 
-JWT (planned)
+- **Admin** – manages system-level resources and users
+- **Doctor** – accesses doctor-related information and operations
+- **Receptionist** – supports administrative and appointment workflows
+- **Patient** – manages patient-related information and appointments
 
-Frontend
+Authentication and authorization are handled by the backend using JWT and Spring Security.
 
-React (JavaScript)
+---
 
-Vite
+## Features
 
-Tailwind CSS v4
+### Authentication & Security
 
-shadcn/ui
+- User registration and login
+- BCrypt password hashing
+- JWT-based authentication
+- Stateless authentication
+- Role-based authorization
+- Protected REST APIs
+- Role-specific API access
+- Centralized exception handling
+- Request validation
 
-React Router
+### User Roles
 
-Axios
+| Role | Purpose |
+|------|---------|
+| ADMIN | System administration and management |
+| DOCTOR | Doctor-related operations |
+| RECEPTIONIST | Reception and appointment workflows |
+| PATIENT | Patient-related operations |
 
-React Query
+### Doctor Management
 
-Milestones
-### Current Features
+- Create doctor records
+- Retrieve doctors
+- Retrieve a doctor by ID
+- Update doctor information
+- Delete doctor records
+- Role-based access control
 
-Implemented:
+### Patient Management
 
-- User Registration
-- User Login
-- BCrypt Password Encryption
-- JWT Token Generation
-- JWT Validation
-- Stateless Spring Security
-- Protected REST APIs Tested
-- Registration API
-- Login API
-- Protected endpoints with Bearer Token
-- Unauthorized access without JWT
+- Patient user accounts
+- Patient profile management
+- Medical profile information
+- Profile retrieval and updates
+- Role-based access control
 
-- Doctor Management
-  - Create Doctor
-  - Update Doctor
-  - Delete Doctor
-  - View Doctor
+### Appointment Management
 
-- Patient Module
-  - Create, Read, Update, Delete patient profiles.
-  - User-to-profile relationship.
-  - REST APIs with validation.
+- Appointment creation
+- Appointment retrieval
+- Appointment updates
+- Appointment deletion
+- Doctor and patient association
 
-- Appointment Management
+---
 
-- Create Appointment
-- View All Appointments
-- View Appointment by ID
-- Update Appointment
-- Cancel/Delete Appointment
-- JWT Protected APIs
+## Technology Stack
 
-✅ Milestone 1
+### Backend
 
-Project setup and authentication foundation.
+- Java 17
+- Spring Boot 3.5.x
+- Spring Web
+- Spring Data JPA
+- Hibernate
+- Spring Security
+- JWT
+- Bean Validation
+- Maven
 
-✅ Milestone 2
+### Database
 
-Authentication APIs (Register/Login/JWT)
+- MySQL
 
-✅  Milestone 3
+### Frontend
 
-Doctor Module
+- React
+- Vite
+- JavaScript
+- Tailwind CSS
+- shadcn/ui
+- Axios
+- React Router
 
-✅ Milestone 4
+---
 
-Patient Module
+## System Architecture
 
-✅ Milestone 5
-
-Appointment Module
-
-⏳ Milestone 6
-
-Frontend Integration
-
-⏳ Milestone 7
-
-Testing, Documentation, Deployment
+```text
+                    ┌─────────────────────┐
+                    │    React Frontend   │
+                    │   Vite + Tailwind   │
+                    └──────────┬──────────┘
+                               │
+                         REST API / JWT
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   Spring Boot API   │
+                    ├─────────────────────┤
+                    │ Controllers         │
+                    │ Services            │
+                    │ Repositories        │
+                    │ Spring Security     │
+                    └──────────┬──────────┘
+                               │
+                           JPA / Hibernate
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │       MySQL         │
+                    └─────────────────────┘

@@ -7,6 +7,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 import java.util.List;
 
 @RestController
@@ -19,6 +21,7 @@ public class PatientProfileController {
         this.patientProfileService = patientProfileService;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public PatientProfileResponse create(
@@ -27,16 +30,19 @@ public class PatientProfileController {
         return patientProfileService.createProfile(request);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'DOCTOR')")
     @GetMapping
     public List<PatientProfileResponse> getAll() {
         return patientProfileService.getAllProfiles();
     }
 
+    @PreAuthorize("hasAnyRole('PATIENT', 'ADMIN')")
     @GetMapping("/{id}")
     public PatientProfileResponse getById(@PathVariable Long id) {
         return patientProfileService.getProfile(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public PatientProfileResponse update(
             @PathVariable Long id,
@@ -45,6 +51,7 @@ public class PatientProfileController {
         return patientProfileService.updateProfile(id, request);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {

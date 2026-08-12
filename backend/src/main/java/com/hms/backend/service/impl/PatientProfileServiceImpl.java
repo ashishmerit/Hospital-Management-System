@@ -9,6 +9,7 @@ import com.hms.backend.dto.request.PatientProfileRequest;
 import com.hms.backend.dto.response.PatientProfileResponse;
 import com.hms.backend.entity.PatientProfile;
 import com.hms.backend.entity.User;
+import com.hms.backend.exception.ResourceNotFoundException;
 import com.hms.backend.repository.PatientProfileRepository;
 import com.hms.backend.repository.UserRepository;
 import com.hms.backend.service.PatientProfileService;
@@ -64,7 +65,7 @@ public class PatientProfileServiceImpl implements PatientProfileService {
     public PatientProfileResponse getProfile(Long id) {
 
         PatientProfile profile = profileRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Profile not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
 
         return map(profile);
     }
@@ -74,10 +75,10 @@ public class PatientProfileServiceImpl implements PatientProfileService {
             PatientProfileRequest request) {
 
         PatientProfile profile = profileRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Profile not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Profile not found"));
 
         User user = userRepository.findById(request.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         profile.setUser(user);
         profile.setDateOfBirth(request.getDateOfBirth());
